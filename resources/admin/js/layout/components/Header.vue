@@ -1,7 +1,7 @@
 <template>
     <header class="page-header">
         <div class="page-header__logo">
-            <div class="page-header-logo__text" >Панель управления ботами </div>
+            <div class="page-header-logo__text" >Панель управления </div>
         </div>
         <section class="page-header__content">
             <div class="page-header__left page-header__container">
