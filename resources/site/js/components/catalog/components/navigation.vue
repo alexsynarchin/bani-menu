@@ -3,7 +3,7 @@
                 <nav class="header-nav col">
                     <ul class="navigation">
                         <li v-for="(item, index) in nav">
-                            <a href="#fish" class="text-orange-hover smooth-scroll" >{{item.title}}</a>
+                            <a :href="'#cat_' + item.id" class="text-orange-hover" v-smooth-scroll>{{item.title}}</a>
                         </li>
                     </ul>
                 </nav>
