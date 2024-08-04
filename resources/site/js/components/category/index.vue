@@ -7,12 +7,14 @@
                 <product v-for="(product, index) in category.products"
                     :key="index"
                      :product = "product"
+
                 ></product>
             </div>
             <category v-if="category.children.length > 0"
                 v-for="(item, index) in category.children"
                   :category="item"
                   :key="index"
+
             ></category>
         </div>
 
@@ -20,6 +22,7 @@
 </template>
 <script>
     import product from "../product/index.vue";
+    import {mapActions} from "vuex";
     export default {
         name: "category",
         components: {product},
@@ -27,6 +30,10 @@
             category: {
                 type: Object
             }
+        },
+        methods: {
+
+
         }
     }
 </script>

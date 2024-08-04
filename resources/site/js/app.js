@@ -1,14 +1,22 @@
+
+
 require('./bootstrap');
 import Vue from "vue";
 import VueSmoothScroll from 'vue2-smooth-scroll'
+import App from "./App";
+import Vuex from "vuex";
+import storeState from "./store";
+Vue.use(Vuex);
+const store = new Vuex.Store(storeState);
 Vue.use(VueSmoothScroll)
 Vue.component('catalog', require('./components/catalog').default);
 
-const app = new Vue({
+new Vue({
     el: '#app',
-    data: {
 
-    }
+    store,
+
+    render: h => h(App),
 });
 Vue.directive('phone', {
     bind(el) {

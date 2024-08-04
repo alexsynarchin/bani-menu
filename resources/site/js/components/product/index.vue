@@ -11,11 +11,14 @@
                         <p>{{product.price}}₽</p>
                     </div>
                     <div class="col-auto product-button">
-                        <button type="button" class="button orange">В корзину</button>
-                        <div class="product-count">
-                            <span class="minus"></span>
-                            <input type="text" value="1" class="count">
-                            <span class="plus"></span>
+
+                        <button v-if="!showAddToBasket" type="button"
+                                class="button orange"
+                                @click.prevent="showAddToBasket=true">В корзину</button>
+                        <div v-if="showAddToBasket" class="product-count" style="display: block">
+                            <span class="minus" @click.prevent = "addToBasket('minus')"></span>
+                            <input type="text" v-model="count" class="count">
+                            <span class="plus" @click.prevent = "addToBasket('plus')"></span>
                         </div>
                     </div>
                 </div>
@@ -24,11 +27,52 @@
     </div>
 </template>
 <script>
+    import { mapActions, mapGetters } from "vuex";
     export default {
         props: {
             product: {
                 type:Object
             }
+        },
+        computed: {
+            ...mapGetters(['getProductCartCount']),
+
+
+        },
+        watch: {
+            '$store.state.TotalPositions': function() {
+                this.count = this.getProductCartCount(this.product.id);
+            }
+        },
+        data() {
+            return {
+                showAddToBasket: false,
+                count:0,
+
+            }
+        },
+        methods: {
+            ...mapActions(['addToCart', 'deleteFromCart']),
+            addToBasket(type) {
+                if(type === 'minus' && this.getProductCartCount === 0) {
+
+                } else {
+                    if(type === 'plus') {
+                        this.addToCart(this.product);
+
+                    } else {
+
+                        this.deleteFromCart(this.product.id);
+                    }
+                    //this.$store.dispatch('addToCart', this.product)
+                    //this.add.addToCart(this.product)
+                }
+
+
+            }
+        },
+        mounted() {
+            this.count = this.getProductCartCount(this.product.id);
         }
     }
 </script>

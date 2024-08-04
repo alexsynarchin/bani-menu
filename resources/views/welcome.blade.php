@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="app">
-    <catalog></catalog>
+    <app></app>
 </div>
 <script src="{{ mix('js/app.js','assets/site') }}"></script>
 </body>

@@ -4,12 +4,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <navigation></navigation>
-                    <div class="header-button col-md-auto">
-                        <button type="button" class="button orange cart-button">
-                            <span>Корзина</span>
-                            <span class="cart-button-count">22</span>
-                        </button>
-                    </div>
+                    <miny-cart></miny-cart>
                 </div>
 
             </div>
@@ -20,20 +15,26 @@
                  :key="index">
             <category
                 :category="category"
+
             ></category>
         </section>
 
-
+    <cart ref="cart"></cart>
     </section>
 </template>
 <script>
 import navigation from "./components/navigation.vue";
+import minyCart from "@/site/js/components/cart/components/minyCart.vue";
 import category from "../category/index.vue";
+import cart from '@/site/js/components/cart'
     export default {
-        components: {navigation, category},
+        components: {navigation, category, minyCart,cart},
         data() {
             return {
                 catalog: [],
+                basket: {
+                    products: []
+                },
             }
         },
         methods: {
@@ -42,6 +43,9 @@ import category from "../category/index.vue";
                     .then((response) => {
                         this.catalog = response.data;
                     })
+            },
+            addToBasket(data) {
+
             }
         },
         mounted() {
