@@ -24,7 +24,7 @@ export default {
 
             },
             formAction: {
-                url: '/api/admin/projects/' + this.id,
+                url: '/api/admin/category/' + this.id,
                 method: 'put',
             },
         }

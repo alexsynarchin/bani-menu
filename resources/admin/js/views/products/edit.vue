@@ -24,7 +24,7 @@ export default {
 
             },
             formAction: {
-                url: '/api/admin/projects/' + this.id,
+                url: '/api/admin/products/' + this.id,
                 method: 'put',
             },
         }
@@ -35,7 +35,7 @@ export default {
         },
         getFormData() {
             this.$root.isLoading = true;
-            return axios.get('/api/admin/projects/' + this.id)
+            return axios.get('/api/admin/products/' + this.id)
                 .then((response) => {
                     this.form = response.data;
                     this.loaded = true;

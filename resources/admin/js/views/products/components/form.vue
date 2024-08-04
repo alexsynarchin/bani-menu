@@ -1,6 +1,7 @@
 <template>
 
             <el-form :model="form" ref="form" label-position="top">
+
                 <div class="d-flex">
                     <el-form-item prop="logo" label="Превью" style="margin-right: 20px">
                         <el-upload
@@ -23,6 +24,12 @@
                         </el-form-item>
                         <el-form-item prop="price" label="Стоимость" :error="errors.get('price')">
                             <el-input v-model="form.price"/>
+                        </el-form-item>
+                        <el-form-item prop="description" label="Описание" :error="errors.get('description')">
+                            <el-input type="textarea" v-model="form.description"/>
+                        </el-form-item>
+                        <el-form-item prop="r_id" label="ID для связи" :error="errors.get('r_id')">
+                            <el-input v-model="form.r_id"/>
                         </el-form-item>
 
 
@@ -91,16 +98,7 @@ export default {
                 });
 
         },
-        getProjectGroupsOptionList(user_id) {
-            axios.get('/api/admin/project-groups-options', {params: {user_id:user_id}})
-                .then((response) => {
-                    this.groups = response.data;
-                    this.form.group_id = parseInt(this.$route.params.id);
-                })
-                .catch((error) => {
 
-                })
-        },
         uploadImage(file){
             let cond = this.beforeImageUpload(file.raw);
             this.form.imageName = file.raw.name;
@@ -134,7 +132,7 @@ export default {
         },
     },
     mounted() {
-        this.getProjectGroupsOptionList(this.userId);
+
     }
 }
 </script>

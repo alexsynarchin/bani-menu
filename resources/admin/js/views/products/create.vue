@@ -20,11 +20,16 @@ export default {
     data() {
         return {
             formAction: {
-                url: '/api/admin/category',
+                url: '/api/admin/products',
                 method: 'post',
             },
             form: {
                 title:"",
+                price:"",
+                preview:"",
+                descritpion: "",
+                r_id:"",
+                category_id: 0,
             }
         }
     },
@@ -35,7 +40,7 @@ export default {
 
     },
     mounted() {
-
+        this.form.category_id = this.$route.params.categoryId;
     }
 }
 </script>

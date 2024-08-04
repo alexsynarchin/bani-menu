@@ -85,7 +85,7 @@ export default {
         closeModal(data) {
             this.modalVisible = false;
             this.id = null;
-            this.getCapabilities();
+            this.getProducts();
         },
         getProducts() {
             axios.get('/api/admin/products', {params: {category_id: this.categoryId}})
@@ -106,11 +106,11 @@ export default {
             }).then(() => {
                 axios.delete('/api/admin/products/' + id)
                     .then((response) => {
-                        let index = this.categories.findIndex(item => item.id === response.data.id);
-                        this.categories.splice(index, 1);
+                        let index = this.products.findIndex(item => item.id === response.data.id);
+                        this.products.splice(index, 1);
                         this.$message({
                             type: 'success',
-                            message: 'Проект удален'
+                            message: 'Товар удален'
                         });
                     });
 

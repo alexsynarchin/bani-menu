@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return Product::all();
     }
 
     /**
@@ -25,7 +26,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+        ], [
+            'title.required' => 'Введите название товара',
+            'price.required' => 'Введите стоимость товара'
+        ]);
+        $product = Product::create($request->except('preview', 'imageName'));
+        if($request->has('imageName')) {
+            $product ->  addMediaFromBase64($request->get('preview'))
+                ->usingFileName($request->get('imageName'))
+                ->toMediaCollection('products');
+        }
+        return $product;
     }
 
     /**
@@ -36,7 +50,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return $product;
     }
 
     /**
@@ -48,7 +63,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->update($request->except('preview', 'imageName'));
+        if($request->has('imageName')) {
+            $product ->  addMediaFromBase64($request->get('preview'))
+                ->usingFileName($request->get('imageName'))
+                ->toMediaCollection('products');
+        }
+        return $product;
     }
 
     /**
@@ -59,6 +81,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return $product;
     }
 }

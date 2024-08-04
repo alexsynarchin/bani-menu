@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('price')->default(0);
             $table->text('r_id')->nullable();
             $table->unsignedInteger('menuindex')->default(0);
-            $table->foreignId('category_id')->constrained('categories')
+            $table->foreignId('category_id') ->default(0)->constrained('categories')
                 ->onDelete('cascade');
             $table->timestamps();
         });
