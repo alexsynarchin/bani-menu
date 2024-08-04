@@ -1,55 +1,15 @@
 const mix = require('laravel-mix');
-let distPath = 'public/assets/admin';
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-const path = require('path')
-function resolve(dir) {
-    return path.join(
-        __dirname,
-        '/resources/admin/js',
-        dir
-    );
+
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel applications. By default, we are compiling the CSS
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+if (process.env.section) {
+    require(`${__dirname}/webpack.mix.${process.env.section}.js`);
 }
-mix
-    .js('resources/admin/js/app.js', 'js')
-    .extract([
-        'vue',
-        'axios',
-        'vuex',
-        'vue-router',
-        'vue-i18n',
-        'element-ui',
-    ])
-    .vue({ version: 2 })
-    .sass('resources/admin/scss/app.scss', 'css')
-    .options({
-        processCssUrls: false,
-        processJsUrls:false
-    })
-
-    .webpackConfig({
-        plugins: [
-            new SVGSpritemapPlugin('resources/admin/svg/*.svg',{
-                output:{
-                    chunk: { keep: true },
-                    filename:'images/sprites.svg'
-                }
-            }),
-        ],
-        resolve: {
-            extensions: ['.js', '.vue', '.json','.scss','.css'],
-            alias: {
-                '@': path.join(__dirname, 'resources')
-            },
-            fallback: {"path":false}
-        },
-        output: {
-            filename: '[name].js',
-            chunkFilename: 'js/[name].[chunkhash:6].js',
-            publicPath: '/assets/admin/',
-
-        },
-    })
-    .sourceMaps()
-    .setPublicPath(distPath)
-    .setResourceRoot("/assets/site/")
-    .version();
