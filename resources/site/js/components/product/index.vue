@@ -14,7 +14,7 @@
 
                         <button v-if="!showAddToBasket" type="button"
                                 class="button orange"
-                                @click.prevent="showAddToBasket=true">В корзину</button>
+                                @click.prevent="addToBasketFirst">В корзину</button>
                         <div v-if="showAddToBasket" class="product-count" style="display: block">
                             <span class="minus" @click.prevent = "addToBasket('minus')"></span>
                             <input type="text" v-model="count" class="count">
@@ -53,6 +53,10 @@
         },
         methods: {
             ...mapActions(['addToCart', 'deleteFromCart']),
+            addToBasketFirst() {
+                this.showAddToBasket = true;
+                this.addToBasket('plus');
+            },
             addToBasket(type) {
                 if(type === 'minus' && this.getProductCartCount === 0) {
 
