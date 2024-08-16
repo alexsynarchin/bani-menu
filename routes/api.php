@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('catalog', [CatalogController::class, 'index']);
 Route::get('catalog/nav', [CatalogController::class, 'nav']);
+Route::get('/test', [\App\Http\Controllers\Api\TestController::class,'index']);
 
