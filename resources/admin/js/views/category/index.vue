@@ -1,7 +1,8 @@
 <template>
     <section class="page">
-        <div class="page-heading d-flex align-items-center justify-content-between mb-3" style="gap:20px;">
-            <el-button type="primary" icon="el-icon-plus" @click="modalOpen('create')">Добавить  категорию</el-button>
+        <div class="page-heading d-flex align-items-center  mb-3" style="gap:20px;">
+            <el-button type="success" icon="el-icon-plus" @click="modalOpen('create')">Добавить  категорию</el-button>
+            <el-button type="primary" icon="el-icon-s-operation" @click="synchronizeRKeeper">Синхронизировать c RKeeper</el-button>
         </div>
         <data-tables style="width: 100%" :data="categories">
             <el-table-column
@@ -86,6 +87,13 @@ import create from "./create.vue";
             }
         },
         methods: {
+            synchronizeRKeeper() {
+                axios.post('/api/admin/synchronize-menu')
+                    .then((response) => {
+                        console.log(response.data)
+
+                    })
+            },
             modalOpen(status) {
                 this.modalStatus = status;
                 this.modalVisible= true;

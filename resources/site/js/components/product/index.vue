@@ -2,13 +2,14 @@
     <div class="product-item col-xl-3 col-md-4 col-sm-6">
         <div class="row gutters10 align-items-sm-center">
             <div class="item-img col-sm-12 col-auto">
-                <img :src="product.preview" alt="">
+                <img :src="product.preview" alt="" v-if="product.preview">
+                <img src="/assets/images/no-image.svg" v-else>
             </div>
             <div class="product-content col-sm-12 col">
                 <h3 class="product-title">{{product.title}}</h3>
                 <div class="row gutters5 product-price-row align-items-center">
                     <div class="col product-price">
-                        <p>{{product.price}}₽</p>
+                        <p>{{product.price }}₽</p>
                     </div>
                     <div class="col-auto product-button">
 

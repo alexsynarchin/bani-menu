@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->unsignedInteger('price')->default(0);
-            $table->text('r_id')->nullable();
+            $table->unsignedInteger('r_id')->default(0);
             $table->unsignedInteger('menuindex')->default(0);
             $table->foreignId('category_id') ->default(0)->constrained('categories')
                 ->onDelete('cascade');

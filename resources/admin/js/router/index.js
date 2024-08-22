@@ -15,8 +15,7 @@ import Layout from '@/admin/js/layout';
 
 /* Router for modules */
 import errorRoutes from './modules/error';
-import projectsRoutes from "./modules/projects";
-import statisticRoutes from "./modules/statistic";
+
 import catalogRoutes from "./modules/catalog";
 
 

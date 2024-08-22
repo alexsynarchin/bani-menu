@@ -8,10 +8,11 @@
                 <div class="cart-product" v-for="(item) in products">
                     <div class="row gutters5 align-items-center">
                         <div class="col-auto cart-product-image">
-                            <img :src="item.preview" alt="">
+                            <img :src="item.preview" alt="" v-if="item.preview">
+                            <img src="/assets/images/no-image.svg" v-else>
                         </div>
                         <div class="col">
-                            <h3 class="cart-product-title">{{item.tile}}</h3>
+                            <h3 class="cart-product-title">{{item.title}}</h3>
                         </div>
                         <div class="col-auto cart-product-remove">
                             <div class="product-remove" @click.prevent="removeItemFromCart(item.id)"></div>

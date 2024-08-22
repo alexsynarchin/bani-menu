@@ -10,7 +10,7 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $catalog = Category::where('parent_id',0)->with('children.products')->with('products')->get();
+        $catalog = Category::where('parent_id',0)->with('children.products')->with('children.children.products')->with('products')->get();
         return $catalog;
     }
     public function nav() {

@@ -20,13 +20,8 @@ use \App\Laravue\Acl;
 use App\Http\Controllers\Admin\Api\AuthController;
 use App\Http\Controllers\Admin\Api\UserController;
 use App\Http\Controllers\Admin\Api\PermissionController;
-use App\Http\Controllers\Admin\Api\ProjectGroupController;
-use App\Http\Controllers\Admin\Api\ProjectController;
-use App\Http\Controllers\Admin\Api\ProjectKeyController;
-use App\Http\Controllers\Admin\Api\ProjectKeyTaskController;
-use App\Http\Controllers\Admin\Api\HandleStatusController;
-use App\Http\Controllers\Admin\Api\ProjectKeyStatisticController;
 use App\Http\Controllers\Admin\Api\BreadcrumbsController;
+use App\Http\Controllers\Admin\Api\RKeeperController;
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -43,8 +38,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/user/{id}/delete', [UserController::class, 'destroy']);
     Route::apiResource('category', CategoryController::class);
     Route::apiResource('/products', ProductController::class);
-
-
+    Route::post('/synchronize-menu', [RKeeperController::class, 'synchronizeMenu']);
 
 
 

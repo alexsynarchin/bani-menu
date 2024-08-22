@@ -11,6 +11,7 @@
 
         </header>
         <div class="start"></div>
+
         <section class="pt-small pb-big" :id="'cat_'+ category.id" v-for="(category, index) in catalog"
                  :key="index">
             <category
