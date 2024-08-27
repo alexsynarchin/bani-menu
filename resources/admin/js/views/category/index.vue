@@ -91,7 +91,7 @@ import create from "./create.vue";
                 axios.post('/api/admin/synchronize-menu')
                     .then((response) => {
                         console.log(response.data)
-
+                        this.getCategories();
                     })
             },
             modalOpen(status) {
@@ -102,9 +102,9 @@ import create from "./create.vue";
             closeModal(data) {
                 this.modalVisible= false;
                 this.id = null;
-                this.getCapabilities();
+                this.getCategories();;
             },
-            getCapabilities() {
+            getCategories() {
                 axios.get('/api/admin/category')
                     .then((response) => {
                         this.categories = response.data;
@@ -137,7 +137,7 @@ import create from "./create.vue";
             },
         },
         mounted() {
-            this.getCapabilities();
+            this.getCategories();
         }
     }
 </script>

@@ -4,6 +4,13 @@ require('./bootstrap');
 import Vue from "vue";
 import VueSmoothScroll from 'vue2-smooth-scroll'
 import App from "./App";
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
+Vue.component('v-select', vSelect)
+
+import Notifications from 'vue-notification'
+Vue.use(Notifications)
+
 import Vuex from "vuex";
 import storeState from "./store";
 Vue.use(Vuex);

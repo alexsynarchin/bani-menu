@@ -5,10 +5,10 @@ export default {
         let index = state.cart.findIndex(cartItem => cartItem.id === item.id);
         if(index === -1) {
             let stateItem = { ...item };
-            stateItem.qt = 1;
+            stateItem.quantity = 1;
             state.cart.push(stateItem);
         } else {
-            state.cart[index].qt++;
+            state.cart[index].quantity++;
         }
 
         state.Total = calculateAmount(state.cart);
@@ -16,10 +16,10 @@ export default {
     },
     DELETE_FROM_CART: (state, item) => {
         let index = state.cart.findIndex(cartItem => cartItem.id === item);
-        if(state.cart[index].qt === 1) {
+        if(state.cart[index].quantity === 1) {
             state.cart.splice(index,1)
         } else {
-            state.cart[index].qt--
+            state.cart[index].quantity--
         }
 
         state.Total = calculateAmount(state.cart);
@@ -33,5 +33,10 @@ export default {
     },
     TOGGLE_CART: (state) => {
         state.ShowCart = !state.ShowCart;
+    },
+    CLEAR_CART: (state) => {
+        state.cart = [];
+        state.Total = calculateAmount(state.cart);
+        state.TotalPositions = calculateTotal(state.cart);
     }
 }

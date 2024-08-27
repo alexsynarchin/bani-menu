@@ -1,5 +1,6 @@
 <template>
     <div id="cart" :class="{'active':ShowCart}">
+
         <div class="cart-close" @click.prevent="toggleCart"></div>
         <div class="cart-inner">
 
@@ -25,7 +26,7 @@
                         <div class="cart-product-count col-auto">
                             <div class="product-count">
                                 <span class="minus" @click.prevent = "addToBasket('minus', item)"></span>
-                                <input type="text" v-model="item.qt" class="count">
+                                <input type="text" v-model="item.quantity" class="count">
                                 <span class="plus" @click.prevent = "addToBasket('plus', item)"></span>
                             </div>
                         </div>
@@ -42,15 +43,16 @@
                 <p class="cart-total">Итого: <span>{{Total}} ₽</span></p>
 
                 <div class="form-group">
-                    <input type="text" name="" value="" placeholder="Номер столика" class="form-control">
+
+                    <v-select placeholder="Номер столика" v-model="table" label="Table" :options="tables"></v-select>
                 </div>
 
                 <div class="form-group">
-                    <textarea name="" rows="5" placeholder="Комментарий" class="form-control"></textarea>
+                    <textarea v-model="comment" name="" rows="5" placeholder="Комментарий" class="form-control"></textarea>
                 </div>
 
                 <div class="cart-button">
-                    <button type="button" class="button orange">Оформить</button>
+                    <button type="button" class="button orange" @click.prevent="saveOrder">Оформить</button>
                 </div>
 
             </div>
@@ -64,9 +66,11 @@ import {mapActions, mapGetters} from "vuex";
  export default {
      data() {
          return {
-             active:false,
-             products: {},
-
+            active:false,
+            products: {},
+            tables:[],
+             table: null,
+             comment: '',
          }
      },
      watch: {
@@ -83,7 +87,7 @@ import {mapActions, mapGetters} from "vuex";
 
      },
      methods: {
-        ...mapActions(['toggleCart', 'removeItemFromCart','addToCart', 'deleteFromCart']),
+        ...mapActions(['toggleCart', 'removeItemFromCart','addToCart', 'deleteFromCart', 'clearCart']),
          addToBasket(type, product) {
 
                  if(type === 'plus') {
@@ -94,10 +98,42 @@ import {mapActions, mapGetters} from "vuex";
                      this.deleteFromCart(product.id);
                  }
 
-         }
+         },
+         getTables() {
+            axios.get('/api/get-open-tables')
+                .then((response) => {
+                    this.tables = response.data;
+                })
+                .catch((error) => {
+
+                })
+         },
+         saveOrder() {
+            if(this.products.length === 0) {
+                this.$notify({type: 'error', text: 'Добавьте товары в корзину'})
+            } else if(!this.table) {
+                this.$notify({type: 'error', text: 'Выберите открытый стол'})
+            } else {
+                axios.post('/api/save-order', {table:this.table, products: this.products,
+                    comment:this.comment, amount: this.Total
+                })
+                    .then((response) => {
+                        this.$notify({type:'success', text: 'Заказ оформлен'});
+                       this.clearCart();
+                       this.products = [];
+
+                    })
+                    .catch((error) => {
+
+                    })
+            }
+
+
+         },
      },
      mounted() {
          this.products = this.cart;
+         this.getTables();
      }
  }
 </script>
