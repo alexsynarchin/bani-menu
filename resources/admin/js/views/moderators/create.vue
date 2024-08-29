@@ -21,10 +21,8 @@ export default {
             form: {
                 email:"",
                 name:"",
-                phone:"",
-                telegram:"",
                 password:"",
-                company_name: "",
+
                 active: false,
                 password_confirmation:"",
                 role:'',

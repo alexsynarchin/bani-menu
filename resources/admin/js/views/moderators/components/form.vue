@@ -14,25 +14,8 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex" :gutter="10">
-                    <el-col :span="12">
-                        <el-form-item prop="phone" label="Телефон">
-                            <el-input v-model="form.phone" placeholder="Телефон"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                        <el-form-item prop="telegram" label="Telegram">
-                            <el-input v-model="form.telegram" placeholder="telegram"></el-input>
-                        </el-form-item>
-                    </el-col>
-
-                </el-row>
                 <el-row :gutter="10" type="flex">
-                    <el-col :span="12">
-                        <el-form-item prop="company_name" label="Компания">
-                            <el-input v-model="form.telegram" placeholder="Компания"></el-input>
-                        </el-form-item>
-                    </el-col>
+
                     <el-col :span="12">
                         <el-form-item prop="role" label="Роль" :error="errors.get('role')">
                             <el-select v-model="form.role" placeholder="Выберите роль" style="width: 100%">
