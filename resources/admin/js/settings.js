@@ -3,7 +3,7 @@ export default {
   /**
    * @type {String}
    */
-  title: 'Панель управления ботами',
+  title: 'Панель управления',
 
 
   /**
