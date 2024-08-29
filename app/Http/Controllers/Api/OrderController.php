@@ -31,15 +31,18 @@ class OrderController extends Controller
             'table' => $request-> get('table')['Table'],
         ]);
         foreach ($request -> products as $product) {
-           OrderItem::create([
+           $orderItem = OrderItem::create([
                'product_id' => $product['id'],
                'order_id' => $order->id,
                 'title' => $product['title'],
                'quantity' => $product['quantity'],
-               'comment' => $product['comment'],
                'price' => $product['price'],
                'cost' => $product['price'] * $product['quantity'],
            ]);
+           if(isset($product['comment'])) {
+               $orderItem -> comment = $product['comment'];
+               $orderItem -> save();
+           }
         }
         $this->rKeeperOrder->saveOrder($order);
         return $order;

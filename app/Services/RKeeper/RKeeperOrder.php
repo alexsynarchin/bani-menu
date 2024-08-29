@@ -26,7 +26,7 @@ class RKeeperOrder
         foreach ($this -> order -> orderItems as $orderItem) {
             $comment = '';
             if($orderItem -> comment) {
-                $comment =  '<Modi code="1174" openName="'.$orderItem -> comment.'/>';
+                $comment =  '<Modi code="1174" openName="'.$orderItem -> comment.'"/>';
             }
            $dishes .= '<Dish id="'.$orderItem -> product -> r_id.'" quantity="'. $orderItem -> quantity * 1000
                .'">' . $comment .'</Dish>' . PHP_EOL;
