@@ -31,7 +31,8 @@ class RKeeperOrder
         $xml = '<?xml version="1.0" encoding="UTF-8"?>
         <RK7Query>
          <RK7CMD CMD="SaveOrder" sendtovdu="true">
-          <Order visit="'. $this -> order -> visit .'"orderIdent="'.$this -> order -> orderIdent . '"/>
+          <Order visit="'. $this -> order -> visit .'"orderIdent="'.$this -> order -> orderIdent . '"
+           persistentComment="'.$order->comment .'"/>
           <Session>
             <Station id="'. $this -> stationID .'"/> ' . PHP_EOL .
             $dishes  . '<Course code="3"/>
