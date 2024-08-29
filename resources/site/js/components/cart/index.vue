@@ -119,13 +119,17 @@ import {mapActions, mapGetters} from "vuex";
                     comment:this.comment, amount: this.Total
                 })
                     .then((response) => {
+
                         this.$notify({type:'success', text: 'Заказ оформлен'});
                        this.clearCart();
                        this.products = [];
 
                     })
                     .catch((error) => {
-
+                        console.log(error.response.data.errors)
+                        if(error.response.data.errors.auth) {
+                            this.$notify({type:'error', text: error.response.data.errors.auth});
+                        }
                     })
             }
 

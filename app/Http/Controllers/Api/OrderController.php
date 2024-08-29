@@ -21,7 +21,9 @@ class OrderController extends Controller
     public function saveOrder(Request $request)
     {
 
-
+        if(!Auth::check()) {
+            return response()->json(['errors'=>  ['auth' => 'Вы должны авторизоваться на сайте']], 422);
+        }
         $order = Order::create([
             'user_id' => Auth::id(),
             'name' => Auth::user()->name,

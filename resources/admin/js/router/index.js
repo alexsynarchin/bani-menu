@@ -74,7 +74,7 @@ export const asyncRoutes = [
         children: [
             {
                 path: 'dashboard',
-                redirect: 'profile',
+                redirect: 'users',
                 name: 'Dashboard',
                 meta: { title: 'dashboard',  noCache: false },
             },

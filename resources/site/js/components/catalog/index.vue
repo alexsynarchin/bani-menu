@@ -4,7 +4,10 @@
             <div class="container">
                 <div class="row align-items-center">
                     <navigation></navigation>
-                    <miny-cart></miny-cart>
+                    <div class="header-button col-md-auto">
+                        <profile></profile>
+                        <miny-cart></miny-cart>
+                    </div>
                 </div>
 
             </div>
@@ -28,8 +31,9 @@ import navigation from "./components/navigation.vue";
 import minyCart from "@/site/js/components/cart/components/minyCart.vue";
 import category from "../category/index.vue";
 import cart from '@/site/js/components/cart'
+import profile from "@/site/js/components/profile/index.vue";
     export default {
-        components: {navigation, category, minyCart,cart},
+        components: {navigation, category, minyCart,cart, profile},
         data() {
             return {
                 catalog: [],

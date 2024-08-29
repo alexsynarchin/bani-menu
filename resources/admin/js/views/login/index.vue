@@ -104,7 +104,9 @@ export default {
           csrf().then(() => {
             this.$store.dispatch('user/login', this.loginForm)
               .then(() => {
-                this.$router.push({ path: this.redirect || '/', query: this.otherQuery }, onAbort => {});
+
+                  console.log(this.redirect)
+               this.$router.push({ path: this.redirect || '/', query: this.otherQuery }, onAbort => {});
                 this.loading = false;
               })
               .catch(() => {
