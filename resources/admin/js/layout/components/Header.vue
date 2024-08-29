@@ -4,6 +4,7 @@
             <div class="page-header-logo__text" >Панель управления </div>
         </div>
         <section class="page-header__content">
+
             <div class="page-header__left page-header__container">
                 <hamburger id="hamburger-container" :is-active="!sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
                 <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
@@ -17,7 +18,7 @@
 
                     <el-button size="small" type="success" icon="el-icon-plus" circle></el-button>
                 </div>-->
-
+                <a href="/" class="el-button el-button--primary el-button--medium">Перейти к меню</a>
                 <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
                     <div class="avatar-wrapper">
                         <img :src="'/assets/admin/images/no-avatar-user.png'" class="user-avatar">
