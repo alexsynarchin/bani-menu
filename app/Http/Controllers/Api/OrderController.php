@@ -37,6 +37,7 @@ class OrderController extends Controller
                'order_id' => $order->id,
                 'title' => $product['title'],
                'quantity' => $product['quantity'],
+               'comment' => $product['comment'],
                'price' => $product['price'],
                'cost' => $product['price'] * $product['quantity'],
            ]);
