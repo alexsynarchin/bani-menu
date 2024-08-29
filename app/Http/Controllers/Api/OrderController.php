@@ -26,7 +26,6 @@ class OrderController extends Controller
             'user_id' => Auth::id(),
             'name' => Auth::user()->name,
             'amount' => $request->amount,
-            'comment' => $request->comment,
             'orderIdent' => $request-> get('table')['OrderIdent'],
             'visit' => $request-> get('table')['Visit'],
             'table' => $request-> get('table')['Table'],
