@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('name');
-            $table->string('comment')->nullable();
             $table->integer('visit');
             $table->integer('orderIdent');
             $table->string('table');

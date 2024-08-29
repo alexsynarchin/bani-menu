@@ -24,8 +24,12 @@ class RKeeperOrder
             $orderItems = OrderItem::where('order_id', $this->order->id) -> with('product')->get();
         $dishes = '';
         foreach ($this -> order -> orderItems as $orderItem) {
+            $comment = '';
+            if($orderItem -> comment) {
+                $comment =  '<Modi code="1174" openName="'.$orderItem -> comment.'/>';
+            }
            $dishes .= '<Dish id="'.$orderItem -> product -> r_id.'" quantity="'. $orderItem -> quantity * 1000
-               .'"/>' . PHP_EOL;
+               .'">' . $comment .'</Dish>' . PHP_EOL;
         }
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>

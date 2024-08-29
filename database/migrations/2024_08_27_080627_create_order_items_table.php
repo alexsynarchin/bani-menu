@@ -17,6 +17,7 @@ class CreateOrderItemsTable extends Migration
             $table->id();
             $table->bigInteger('order_id')->unsigned();
             $table->bigInteger('product_id')->unsigned()->nullable();
+            $table->string('comment')->nullable();
             $table->string('title');
             $table->decimal('price', 10, 2)->unsigned();
             $table->tinyInteger('quantity')->unsigned()->default(1);

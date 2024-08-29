@@ -7,7 +7,7 @@
             <div class="cart-products">
 
                 <div class="cart-product" v-for="(item) in products">
-                    <div class="row gutters5 align-items-center">
+                    <div class="row gutters5 align-items-center" >
                         <div class="col-auto cart-product-image">
                             <img :src="item.preview" alt="" v-if="item.preview">
                             <img src="/assets/images/no-image.svg" v-else>
@@ -19,7 +19,7 @@
                             <div class="product-remove" @click.prevent="removeItemFromCart(item.id)"></div>
                         </div>
                     </div>
-                    <div class="cart-product-price-row row gutters5 align-items-center">
+                    <div class="cart-product-price-row row gutters5 align-items-center" style="margin-bottom: 10px">
                         <div class="cart-product-price col">
                             <span>{{item.price}} ₽</span>
                         </div>
@@ -30,6 +30,9 @@
                                 <span class="plus" @click.prevent = "addToBasket('plus', item)"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea v-model="item.comment" name="" rows="3" placeholder="Комментарий" class="form-control"></textarea>
                     </div>
                 </div>
 
@@ -47,9 +50,7 @@
                     <v-select placeholder="Номер столика" v-model="table" label="Table" :options="tables"></v-select>
                 </div>
 
-                <div class="form-group">
-                    <textarea v-model="comment" name="" rows="5" placeholder="Комментарий" class="form-control"></textarea>
-                </div>
+
 
                 <div class="cart-button">
                     <button type="button" class="button orange" @click.prevent="saveOrder">Оформить</button>
