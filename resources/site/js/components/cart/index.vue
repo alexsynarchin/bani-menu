@@ -130,6 +130,9 @@ import {mapActions, mapGetters} from "vuex";
                         if(error.response.data.errors.auth) {
                             this.$notify({type:'error', text: error.response.data.errors.auth});
                         }
+                        if(error.response.data.errors.order) {
+                            this.$notify({type:'error', text: error.response.data.errors.order});
+                        }
                     })
             }
 

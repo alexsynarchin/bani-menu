@@ -22,7 +22,7 @@ class OrderController extends Controller
     {
 
         if(!Auth::check()) {
-            return response()->json(['errors'=>  ['auth' => 'Вы должны авторизоваться на сайте']], 422);
+            return response()->json(['errors'=>  ['auth' => 'Вы должны авторизоваться на сайте']], 401);
         }
         $order = Order::create([
             'user_id' => Auth::id(),
@@ -46,7 +46,10 @@ class OrderController extends Controller
                $orderItem -> save();
            }
         }
-        $this->rKeeperOrder->saveOrder($order);
+        $result =  $this->rKeeperOrder->saveOrder($order);
+        if($result['ErrorText']) {
+            return response()->json(['errors'=>  ['order' => $result['ErrorText']]], 422);
+        }
         return $order;
     }
 }

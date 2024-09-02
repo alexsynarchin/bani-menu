@@ -49,9 +49,10 @@ class RKeeperOrder
          </RK7CMD>
         </RK7Query>
         ';
+
         $result = $this->rKeeperBaseRequest->baseRequest($xml);
 
-
+        return simplexml_load_string($result);
     }
     public function getOrder()
     {
