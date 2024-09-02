@@ -22,7 +22,7 @@ export default {
                 email:"",
                 name:"",
                 password:"",
-
+                r_code: 0,
                 active: false,
                 password_confirmation:"",
                 role:'',

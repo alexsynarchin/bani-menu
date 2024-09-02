@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/user/{id}/update', [UserController::class,'update']);
     Route::post('/user/{id}/change-password', [UserController::class,'changePassword']);
     Route::post('/user/{id}/delete', [UserController::class, 'destroy']);
+    Route::get('/user/employees', [UserController::class, 'getEmployees']);
     Route::apiResource('category', CategoryController::class);
     Route::apiResource('/products', ProductController::class);
     Route::post('/synchronize-menu', [RKeeperController::class, 'synchronizeMenu']);

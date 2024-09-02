@@ -5,11 +5,17 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Http\Controllers\Controller;
 use App\Laravue\Models\Role;
 use App\Laravue\Models\User;
+use App\Services\RKeeper\RKeeperGetEmployees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public RKeeperGetEmployees $rKeeperGetEmployees;
+    public function __construct(RKeeperGetEmployees $rKeeperGetEmployees)
+    {
+        $this->rKeeperGetEmployees= $rKeeperGetEmployees;
+    }
     public function index()
     {
         $users = User::all();
@@ -74,5 +80,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return $user;
+    }
+
+    public function getEmployees()
+    {
+
+      return $this -> rKeeperGetEmployees -> getEmployees();
     }
 }

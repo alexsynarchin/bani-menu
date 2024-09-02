@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="{{URL::asset('images/favicon.png')}}" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
-    <title>Интернет магазин Столичные бани</title>
+    <title>Ресторан "Вкусняшка"</title>
 
 </head>
 <body>

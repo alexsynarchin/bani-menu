@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services\RKeeper;
-
+use App\Services\RKeeper\RKeeperBaseRequest;
 class RKeeperGetOpenTables
 {
     protected RKeeperBaseRequest $rKeeperBaseRequest;

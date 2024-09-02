@@ -29,17 +29,31 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-
+                    <el-col :span="12">
+                    <el-form-item prop="r_code" label="Связь с RKeeper" :error="errors.get('r_code')">
+                        <el-select v-model="form.r_code" filterable placeholder="Выберите пользователя" style="width: 100%">
+                            <el-option
+                                v-for="item in employees"
+                                :key="item.r_code"
+                                :label="item.name"
+                                :value="item.r_code"
+                            >
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-col>
                 </el-row>
                 <el-row type="flex" :gutter="10"  v-if="formAction.url === '/api/admin/user/store'">
                     <el-col :span="12">
                         <el-form-item prop="password" label="Пароль" :error="errors.get('password')">
-                            <el-input v-model="form.password" placeholder="Введите пароль" show-password></el-input>
+                            <el-input v-model="form.password" placeholder="Введите пароль"
+                                      show-password></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
                         <el-form-item prop="password_confirmation" label="Подтверждение пароля">
-                            <el-input v-model="form.password_confirmation" placeholder="Повторите пароль" show-password></el-input>
+                            <el-input v-model="form.password_confirmation" placeholder="Повторите пароль"
+                                      show-password></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -71,9 +85,10 @@ export default {
     },
     data() {
         return {
+            employees: [],
             roles: [
                 {
-                    label: 'Пользователь',
+                    label: 'Официант',
                     value: 'manager'
                 },
                 {
@@ -106,9 +121,15 @@ export default {
             ;
 
         },
+        getEmployees() {
+            axios.get('/api/admin/user/employees')
+                .then((response) => {
+                    this.employees = response.data
+                })
+        }
     },
     mounted() {
-
+        this.getEmployees();
     }
 }
 </script>

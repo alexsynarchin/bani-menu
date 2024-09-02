@@ -33,24 +33,8 @@
             >
             </el-table-column>
 
-            <el-table-column
-                label="Телефон"
-                prop="phone"
-                sortable
-            >
-            </el-table-column>
-            <el-table-column
-                label="Telegram"
-                prop="telegram"
-                sortable
-            >
-            </el-table-column>
-            <el-table-column
-                label="Компания"
-                prop="company_name"
-                sortable
-            >
-            </el-table-column>
+
+
 
             <el-table-column
                 label="Действия"
@@ -166,6 +150,7 @@ export default {
         updateModerator(formName) {
 
         },
+
 
     },
     mounted() {

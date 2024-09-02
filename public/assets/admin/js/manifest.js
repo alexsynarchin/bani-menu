@@ -120,7 +120,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + "." + {"resources_admin_js_views_redirect_index_vue":"ddb691","resources_admin_js_views_login_index_vue":"1c208e","resources_admin_js_views_register_index_vue":"1cab53","resources_admin_js_views_login_AuthRedirect_vue":"0a8142","resources_admin_js_views_error-page_404_vue":"5da089","resources_admin_js_views_error-page_401_vue":"b73b5e","resources_admin_js_views_user-profile_index_vue":"6760bd","resources_admin_js_views_moderators_index_vue":"b140da","resources_admin_js_views_category_index_vue":"ca2502","resources_admin_js_views_category_show_vue":"f52d52"}[chunkId] + ".js";
+/******/ 			return "js/" + chunkId + "." + {"resources_admin_js_views_redirect_index_vue":"ddb691","resources_admin_js_views_login_index_vue":"1c208e","resources_admin_js_views_register_index_vue":"1cab53","resources_admin_js_views_login_AuthRedirect_vue":"0a8142","resources_admin_js_views_error-page_404_vue":"5da089","resources_admin_js_views_error-page_401_vue":"b73b5e","resources_admin_js_views_user-profile_index_vue":"6760bd","resources_admin_js_views_moderators_index_vue":"4dd17d","resources_admin_js_views_category_index_vue":"ca2502","resources_admin_js_views_category_show_vue":"f52d52"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	

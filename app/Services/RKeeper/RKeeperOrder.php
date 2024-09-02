@@ -4,7 +4,7 @@ namespace App\Services\RKeeper;
 
 use App\Models\Order;
 use App\Models\OrderItem;
-
+use App\Services\RKeeper\RKeeperBaseRequest;
 class RKeeperOrder
 {
     protected RKeeperBaseRequest $rKeeperBaseRequest;
