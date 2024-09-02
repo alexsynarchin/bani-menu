@@ -31,13 +31,18 @@ class RKeeperOrder
            $dishes .= '<Dish id="'.$orderItem -> product -> r_id.'" quantity="'. $orderItem -> quantity * 1000
                .'">' . $comment .'</Dish>' . PHP_EOL;
         }
-
+        $waiter = '';
+        $user = $this->order -> user;
+        if($user -> r_code) {
+            $waiter = '<Waiter code="'.$user -> r_code.'"/>' . PHP_EOL;
+        }
         $xml = '<?xml version="1.0" encoding="UTF-8"?>
         <RK7Query>
          <RK7CMD CMD="SaveOrder" sendtovdu="true">
           <Order visit="'. $this -> order -> visit .'"orderIdent="'.$this -> order -> orderIdent . '"
            persistentComment="'.$order->comment .'"/>
           <Session>
+            '.$waiter.'
             <Station id="'. $this -> stationID .'"/> ' . PHP_EOL .
             $dishes  . '<Course code="3"/>
           </Session>
