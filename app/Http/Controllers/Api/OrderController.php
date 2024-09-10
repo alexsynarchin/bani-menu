@@ -47,7 +47,8 @@ class OrderController extends Controller
            }
         }
         $result =  $this->rKeeperOrder->saveOrder($order);
-        if($result['ErrorText']) {
+
+        if($result['RK7ErrorN']) {
             return response()->json(['errors'=>  ['order' => $result['ErrorText']]], 422);
         }
         return $order;
