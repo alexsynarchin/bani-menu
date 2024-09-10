@@ -34,7 +34,7 @@ class RKeeperOrder
         $waiter = '';
         $user = $this->order -> user;
         if($user -> r_code) {
-            $waiter = '<Waiter code="'.$user -> r_code.'"/>' . PHP_EOL;
+            $waiter = '<Author code="'.$user -> r_code.'"/>' . PHP_EOL;
         }
         $xml = '<?xml version="1.0" encoding="UTF-8"?>
         <RK7Query>
