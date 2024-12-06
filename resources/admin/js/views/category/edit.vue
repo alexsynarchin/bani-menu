@@ -34,8 +34,9 @@ export default {
             this.$emit('close',data)
         },
         getFormData() {
+            console.log('test')
             this.$root.isLoading = true;
-            return axios.get('/api/admin/projects/' + this.id)
+            return axios.get('/api/admin/category/' + this.id)
                 .then((response) => {
                     this.form = response.data;
                     this.loaded = true;

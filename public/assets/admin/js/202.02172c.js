@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[202],{28202:(e,n,r)=>{r.r(n),r.d(n,{default:()=>t});const u={beforeCreate:function(){var e=this.$route,n=e.params,r=e.query,u=n.path;this.$router.replace({path:"/"+u,query:r})},render:function(e){return e()}};const t=(0,r(14486).A)(u,undefined,undefined,!1,null,null,null).exports}}]);
+//# sourceMappingURL=202.02172c.js.map
