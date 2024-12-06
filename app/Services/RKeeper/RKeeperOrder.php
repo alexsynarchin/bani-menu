@@ -26,7 +26,7 @@ class RKeeperOrder
         foreach ($this -> order -> orderItems as $orderItem) {
             $comment = '';
             if($orderItem -> comment) {
-                $comment =  '<Modi code="1174" openName="'.$orderItem -> comment.'"/>';
+                $comment =  '<Modi code="151" openName="'.$orderItem -> comment.'"/>';
             }
            $dishes .= '<Dish id="'.$orderItem -> product -> r_id.'" quantity="'. $orderItem -> quantity * 1000
                .'">' . $comment .'</Dish>' . PHP_EOL;
@@ -44,7 +44,7 @@ class RKeeperOrder
           <Session>
             '.$waiter.'
             <Station id="'. $this -> stationID .'"/> ' . PHP_EOL .
-            $dishes  . '<Course code="3"/>
+            $dishes  . '
           </Session>
          </RK7CMD>
         </RK7Query>
@@ -66,6 +66,7 @@ class RKeeperOrder
             </RK7Query>';
         $orderXml = simplexml_load_string($this->rKeeperBaseRequest->baseRequest($xml));
         $this -> stationID = (string) $orderXml->CommandResult->Order->Station['id'];
+
     }
 
 
