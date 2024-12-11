@@ -17,6 +17,7 @@
                     .then((response) => {
                         if(response.data) {
                             this.user = response.data;
+                            this.$store.commit('SET_USER_ID', this.user.id);
                         }
                     })
             }

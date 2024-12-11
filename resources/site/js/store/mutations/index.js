@@ -38,5 +38,8 @@ export default {
         state.cart = [];
         state.Total = calculateAmount(state.cart);
         state.TotalPositions = calculateTotal(state.cart);
-    }
+    },
+    SET_USER_ID: (state, id) => {
+        state.userId = id;
+    },
 }

@@ -8,6 +8,7 @@ export default {
         TotalPositions: 0,
         Total: 0,
         ShowCart:false,
+        userId: 0,
     },
     getters,
     actions,

@@ -12,5 +12,5 @@ export default {
         return count;
     },
 
-
+    UserId: ({ userId }) => userId,
 };

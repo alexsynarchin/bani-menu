@@ -19,6 +19,6 @@
 <div id="app">
     <app></app>
 </div>
-<script src="{{ mix('js/app.js','assets/site') }}?ver=11"></script>
+<script src="{{ mix('js/app.js','assets/site') }}?ver=2"></script>
 </body>
 </html>

@@ -11,6 +11,10 @@ class RKeeperOrder
     protected Order $order;
     protected string $stationID;
 
+    /**
+     * @param RKeeperBaseRequest $rKeeperBaseRequest
+     * @param Order $order
+     */
     public function __construct(RKeeperBaseRequest $rKeeperBaseRequest, Order $order)
     {
         $this->rKeeperBaseRequest = $rKeeperBaseRequest;
@@ -33,6 +37,7 @@ class RKeeperOrder
         }
         $waiter = '';
         $user = $this->order -> user;
+
         if($user -> r_code) {
             $waiter = '<Author code="'.$user -> r_code.'"/>' . PHP_EOL;
         }
