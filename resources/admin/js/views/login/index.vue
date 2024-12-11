@@ -2,7 +2,7 @@
   <div class="login-container">
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
           <h3 class="title">
-               Войти в панель управления
+               Войти в личный кабинет
           </h3>
           <el-form-item prop="email">
         <span class="svg-container">
