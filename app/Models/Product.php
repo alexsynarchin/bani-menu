@@ -12,7 +12,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class Product extends Model implements HasMedia
 {
     use HasFactory,  InteractsWithMedia;
-    protected $fillable = ['title', 'price', 'description', 'r_id', 'category_id'];
+    protected $fillable = ['title', 'price', 'description', 'r_id', 'category_id', 'divider'];
     protected $appends = ['preview', 'thumb'];
     public function registerMediaCollections(): void
     {

@@ -6,10 +6,11 @@
                 <img src="/assets/images/no-image.svg" v-else>
             </div>
             <div class="product-content col-sm-12 col">
-                <h3 class="product-title">{{product.title}}</h3>
+                <h3 class="product-title">{{product.title}} <span v-if="product.divider">({{product.divider}}гр)</span></h3>
                 <div class="row gutters5 product-price-row align-items-center">
                     <div class="col product-price">
-                        <p>{{product.price }}₽</p>
+                        <p v-if="product.divider">{{priceWithDivider(product.price, product.divider)}}₽</p>
+                        <p v-else>{{product.price }}₽</p>
                     </div>
                     <div class="col-auto product-button">
 
@@ -28,6 +29,7 @@
     </div>
 </template>
 <script>
+import { priceWithDivider } from "@/site/js/functions";
     import { mapActions, mapGetters } from "vuex";
     export default {
         props: {
@@ -54,6 +56,7 @@
         },
         methods: {
             ...mapActions(['addToCart', 'deleteFromCart']),
+            priceWithDivider,
             addToBasketFirst() {
                 this.showAddToBasket = true;
                 this.addToBasket('plus');

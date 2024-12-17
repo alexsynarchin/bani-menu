@@ -28,11 +28,15 @@ class RKeeperOrder
             $orderItems = OrderItem::where('order_id', $this->order->id) -> with('product')->get();
         $dishes = '';
         foreach ($this -> order -> orderItems as $orderItem) {
+            $quantityMultiplier = 1000;
+            if($orderItem->divider) {
+                $quantityMultiplier = $orderItem->divider;
+            }
             $comment = '';
             if($orderItem -> comment) {
                 $comment =  '<Modi code="151" openName="'.$orderItem -> comment.'"/>';
             }
-           $dishes .= '<Dish id="'.$orderItem -> product -> r_id.'" quantity="'. $orderItem -> quantity * 1000
+           $dishes .= '<Dish id="'.$orderItem -> product -> r_id.'" quantity="'. $orderItem -> quantity * $quantityMultiplier
                .'">' . $comment .'</Dish>' . PHP_EOL;
         }
         $waiter = '';

@@ -1,10 +1,13 @@
-import { calculateAmount, calculateTotal, copyFunc } from "@/site/js/functions";
+import { calculateAmount, calculateTotal, copyFunc, priceWithDivider } from "@/site/js/functions";
 export default {
     ADD_TO_CART: (state, item) => {
         state.TotalPositions++;
         let index = state.cart.findIndex(cartItem => cartItem.id === item.id);
         if(index === -1) {
             let stateItem = { ...item };
+            if(stateItem.divider) {
+                stateItem.price = priceWithDivider(stateItem.price, stateItem.divider);
+            }
             stateItem.quantity = 1;
             state.cart.push(stateItem);
         } else {

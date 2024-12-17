@@ -10,4 +10,10 @@ const copyFunc = (obj_1, obj_2, item) => {
     return obj_2;
 };
 
-export { calculateAmount, calculateTotal, copyFunc };
+const priceWithDivider = (price, divider) =>
+{
+    let multiplicator = divider * 0.001;
+    return price * multiplicator;
+}
+
+export { calculateAmount, calculateTotal, copyFunc, priceWithDivider };

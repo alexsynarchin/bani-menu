@@ -24,6 +24,7 @@ class OrderController extends Controller
         if(!Auth::check()) {
             return response()->json(['errors'=>  ['auth' => 'Вы должны авторизоваться на сайте']], 401);
         }
+
         $order = Order::create([
             'user_id' => Auth::id(),
             'name' => Auth::user()->name,

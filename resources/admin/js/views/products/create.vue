@@ -29,6 +29,7 @@ export default {
                 preview:"",
                 descritpion: "",
                 r_id:"",
+                divider:0,
                 category_id: 0,
             }
         }

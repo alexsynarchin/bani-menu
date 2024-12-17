@@ -25,6 +25,10 @@
                         <el-form-item prop="price" label="Стоимость" :error="errors.get('price')">
                             <el-input v-model="form.price"/>
                         </el-form-item>
+                        <el-form-item prop="divider" label="Порция в граммах">
+                            <el-input-number :max="100"
+                                             v-model="form.divider" :step="5" step-strictly></el-input-number>
+                        </el-form-item>
                         <el-form-item prop="description" label="Описание" :error="errors.get('description')">
                             <el-input type="textarea" v-model="form.description"/>
                         </el-form-item>

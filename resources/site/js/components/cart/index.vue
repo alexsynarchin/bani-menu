@@ -13,7 +13,7 @@
                             <img src="/assets/images/no-image.svg" v-else>
                         </div>
                         <div class="col">
-                            <h3 class="cart-product-title">{{item.title}}</h3>
+                            <h3 class="cart-product-title">{{item.title}} <span v-if="item.divider">({{item.divider}}гр)</span></h3>
                         </div>
                         <div class="col-auto cart-product-remove">
                             <div class="product-remove" @click.prevent="removeItemFromCart(item.id)"></div>
