@@ -43,11 +43,13 @@ class OrderController extends Controller
                'divider' => $product['divider'],
                'cost' => $product['price'] * $product['quantity'],
            ]);
+
            if(isset($product['comment'])) {
                $orderItem -> comment = $product['comment'];
                $orderItem -> save();
            }
         }
+
         $result =  $this->rKeeperOrder->saveOrder($order);
 
         if($result['RK7ErrorN']) {
