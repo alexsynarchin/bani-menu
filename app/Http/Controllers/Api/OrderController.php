@@ -40,6 +40,7 @@ class OrderController extends Controller
                 'title' => $product['title'],
                'quantity' => $product['quantity'],
                'price' => $product['price'],
+               'divider' => $product['divider'],
                'cost' => $product['price'] * $product['quantity'],
            ]);
            if(isset($product['comment'])) {
